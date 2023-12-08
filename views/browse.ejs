@@ -1,0 +1,36 @@
+<main class="main-container">
+    <section class="main-content">
+        <div class="empty-column">
+            <!-- This empty column is used for layout purposes -->
+            <!-- It helps create space between the main content and the edge of the screen --> 
+        </div>
+        <!-- Main left column containing the recipe browsing content -->
+        <div class="main-left-column">
+            <h1 class="main-headline-font">Browse recipes</h1>
+
+            <!-- Container for recipe cards, generated dynamically from the 'recipes' array -->
+            <div class="recipe-cards">
+                <!-- Loop through each recipe in the 'recipes' array -->
+                <% recipes.forEach(recipe => { %>
+                    <!-- Individual recipe card with image, name, and description -->
+                    <div class="recipe-card">
+                        <a href="/chosenrecipe/<%= recipe._id %>" class="recipe-link">
+                            <!-- Recipe image dynamically loaded based on the recipe's category -->
+                            <img src="<%= getRecipeImage(recipe.category) %>" alt="<%= recipe.name %> Image" class="recipe-image">
+                            
+                            <!-- Recipe information container -->
+                            <div class="recipe-info">
+                                <p class="recipe-name"><%= recipe.name %></p>
+                                <!-- Shortened description of the recipe -->
+                                <p class="recipe-description"><%= shortenDescription(recipe.description) %></p>
+                            </div>
+                        </a>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        <div class="empty-column">
+            <!-- Empty column on the right for layout purposes -->
+        </div>
+    </section>
+</main>

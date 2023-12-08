@@ -1,0 +1,60 @@
+<main class="main-container">
+    <section class="main-content">
+        <div class="empty-column">
+               <!-- Empty-column class on the left for layout purposes but making use for introductory text in larger resolutions -->
+            <p class="create-side">
+                Share your best recipies! Fill out the form to add a new one to our collection! 
+            </p>
+            <p class="create-side-medium">
+                Share your best recipies!
+            </p>
+        </div>
+        <div class="main-left-column">
+            <h1 class="main-headline-font">Add recipe</h1>
+            <!-- Form for creating a new recipe -->
+            <form class="create-form" action="/create" method="POST">
+                <!-- Name -->
+                <label for="name" class="form-label">Name of the dish</label>
+                <input type="text" name="name" id="name" class="form-name" required>
+                <!-- Description -->
+                <label for="description" class="form-label">Describe how it is made</label>
+                <textarea name="description" id="description" class="form-description" required></textarea>
+                <!-- Ingredients -->
+                <label for="ingredients" class="form-label">Ingredients</label><br>
+                <small>Example: 1 Red Chilipepper</small>
+                <div class="ingredientList">
+                    <div class="ingredientDiv">
+                        <input type="text" name="ingredients" class="form-ingredients" required>
+                    </div>
+                </div>
+                <!-- Button to dynamically add more ingredient input fields -->
+                <button type="button" class="button-add-ingredients" id="addIngredientsButton">+ Ingredient</button>
+                <br>
+                <!-- Category dropdown -->
+                <label class="form-label" for="category">Select Category</label>
+                <select class="form-select" name="category" aria-label="Category" required>
+                    <option selected></option>
+                    <option value="Baking">Baking</option>
+                    <option value="Meat">Meat</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Dessert">Dessert</option>
+                </select>
+                <!-- Button to submit the recipe form -->
+                <button type="submit" class="button-create">Submit Recipe</button>
+                <!-- Adding flash message for confirmation if recipe is added or not -->
+                <% if(flashCreate != '') { %>
+                    <div class="recipe-added" role="alert">
+                      <%= flashCreate %>
+                    </div>
+                <% } %>
+                <% if(flashError != '') { %>
+                    <div class="recipe-not-added" role="alert">
+                        <%= flashError %>
+                    </div>
+                <% } %>
+            </form>
+        </div>
+    </section>
+    <!-- Script for handling ingredient button -->
+    <script src="/js/ingredientbutton.js"></script>
+</main>

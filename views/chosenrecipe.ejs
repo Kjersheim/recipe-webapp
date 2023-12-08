@@ -1,0 +1,38 @@
+<main class="main-container">
+    <section class="main-content">
+        <div class="empty-column">
+            <!-- This empty column is used for layout purposes -->
+            <!-- It helps create space between the main content and the edge of the screen --> 
+        </div>
+        
+        <div class="main-left-column">
+            <h1 class="main-headline-font">Recipe Details</h1>
+
+            <!-- Full recipe details -->
+            <div class="recipe-page-card">
+                <div class="recipe-page-info">
+                    <h2 class="recipe-page-name"><%= recipe.name %></h2>
+                     <!-- Image for the recipe -->
+                    <img src="<%= getRecipeImage(recipe.category) %>" alt="<%= recipe.name %> Image" class="recipe-page-img">
+                    <br>
+                    
+                    <!-- Replace each newline character (\n) with a <br> tag, which should create new lines in the HTML output. -->
+                    <%- recipe.description.replace(/\n/g, '<br>') %>
+                    
+                    <!-- List the ingredients vertically -->
+                    <p class="recipe-page-ingredients">
+                        Ingredients:
+                        <br>
+                        <%- recipe.ingredients.map(ingredient => `${ingredient}<br>`).join('') %>
+                    </p>
+                    <p class="recipe-page-category">Category: <%= recipe.category %></p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="empty-column">
+            <!-- This empty column to the right for layout purposes -->
+        </div>
+    </section>
+</main>

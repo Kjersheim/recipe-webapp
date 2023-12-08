@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and viewport configuration -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Preconnecting to external font resources to improve loading performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Rubik+Mono+One&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Linking to external stylesheet for page styling -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Deferring the execution of the navigation script until the document is parsed -->
+    <script src="/js/nav.js" defer></script>
+    
+    <!-- Dynamic title based on EJS variable, defaulting to a fallback title -->
+    <title><%= typeof title != 'undefined' ? title : 'RecipeApp - Kjersheim' %></title>
+</head>
+<body class="home">
+    <!-- Header section containing the logo, navigation toggle, and navigation links -->
+    <header class="primary-header flex">
+        <div>
+            <!-- Link to the home page with the logo image -->
+            <a href="/"><img src="/img/GreenLogoSmall.png" alt="RecipesLogo" class="logo"></a>
+        </div>
+
+        <!-- Button to toggle the mobile navigation menu -->
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation">
+            <!-- Screen-reader only text for accessibility -->
+            <span class="sr-only" aria-expanded="false">Menu</span>
+        </button>
+
+        <!-- Navigation links -->
+        <nav>
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
+                <!-- Home Link -->
+                <li class="navfont">
+                    <a href="/" class="navfont">
+                        <span aria-hidden="true">00</span>Home
+                    </a>
+                </li>
+                <!-- Browse Link -->
+                <li>
+                    <a href="/browse" class="navfont">
+                        <span aria-hidden="true">01</span>Browse
+                    </a>
+                </li>
+                <!-- Create Link -->
+                <li>
+                    <a href="/create" class="navfont">
+                        <span aria-hidden="true">02</span>Create
+                    </a>
+                </li>
+                <!-- About Link -->
+                <li>
+                    <a href="/about" class="navfont">
+                        <span aria-hidden="true">03</span>About
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content dynamically injected based on individual route templates -->
+    <main>
+        <!-- Body content injected here -->
+        <%- body -%>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="fixed-footer">
+        <div class="footer-content">
+            <div>
+                <!-- Copyright notice -->
+                <p> FullStack Project @ JAMK, by Andreas Kjersheim.</p>
+
+                <!-- Social media icons with links -->
+                <ul class="social-icons">
+                    <li><a href="https://linkedin.com" target="_blank"><img src="/img/icons8-linkedin-whitesmall.png"></a></li>
+                    <li><a href="https://mastodon.social/@Kjersheim" target="_blank"><img src="/img/icons8-mastodon-whitesmall.png"></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
